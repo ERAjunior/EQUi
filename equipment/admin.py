@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from equipment.models import Area, Street, House, VendorModel, SwitchModel, Switch
+from equipment.models import Area, Street, House, VendorModel, SwitchModel, Switch, Description
 
 class SwitchInHouse(admin.StackedInline):
     model = Switch
@@ -10,7 +10,16 @@ class SwitchInHouse(admin.StackedInline):
 class HouseAdmin(admin.ModelAdmin):
     inlines = [SwitchInHouse]
 
-admin.site.register([Area,Street,VendorModel, SwitchModel, Switch])
-admin.site.register(House, HouseAdmin)
 
+class DescriptionInSwitch(admin.StackedInline):
+    model = Description
+    extra = 0
+
+
+class SwitchAdmin(admin.ModelAdmin):
+    inlines = [DescriptionInSwitch]
+
+admin.site.register([Area,Street,VendorModel, SwitchModel])
+admin.site.register(House, HouseAdmin)
+admin.site.register(Switch, SwitchAdmin)
 
