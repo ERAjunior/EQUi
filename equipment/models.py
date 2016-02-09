@@ -96,4 +96,15 @@ class Switch(models.Model):
             return u'%s - %s - %s' % (self.ipaddr_switch, self.name_switch, self.switch_house)
 
 
-
+class Description(models.Model):
+    class Meta():
+        db_table = 'description'
+        verbose_name = u'Дескрипшен'
+        verbose_name_plural = u'Дескрипшены'
+    switch = models.ForeignKey(Switch)
+    kv = models.CharField(u'Квартира', max_length=5)
+    pd = models.CharField(u'Подъезд', max_length=5)
+    port =  models.IntegerField(u'Порт')
+    FIO = models.CharField(u'ФИО', max_length=100)
+    date_create_descr = models.DateTimeField(auto_now_add=True, null=True)
+    user = models.ForeignKey(User, null=True)
