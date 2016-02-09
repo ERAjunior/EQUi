@@ -68,10 +68,32 @@ class SwitchModel(models.Model):
         verbose_name_plural = u'Модели'
     vendor_model = models.ForeignKey(VendorModel)
     name_model = models.CharField(u'Название модели', max_length=200)
-    num_ports_model = models.IntegerField(u'Кол-во (медных) портов', default=1)
+    num_ports_model = models.IntegerField(u'Кол-во портов', default=1)
     num_watt_model = models.IntegerField(u'Потребляемая мощность в Вт', default=1)
     date_create_model = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
 
     def __unicode__(self):
         return u'%s - %s' % (self.vendor_model, self.name_model)
+
+class Switch(models.Model):
+    class Meta():
+        db_table = 'switch'
+        verbose_name = u'Коммутатор'
+        verbose_name_plural = u'Коммутаторы'
+    name_switch = models.CharField(u'Обозначение на сети',max_length=100)
+    ipaddr_switch = models.GenericIPAddressField(default='0.0.0.0')
+    pd_switch = models.CharField(max_length=100, default='пд.', blank=True, null=True)
+    switch_modelid = models.ForeignKey(SwitchModel, null=True)
+    switch_house = models.ForeignKey(House, null=True)
+    date_create_switch = models.DateTimeField(auto_now_add=True, null=True)
+    user = models.ForeignKey(User, null=True)
+
+    def __unicode__(self):
+        if self.pd_switch:
+            return u'%s - %s - %s (%s)' % (self.ipaddr_switch, self.name_switch, self.switch_house, self.pd_switch)
+        else:
+            return u'%s - %s - %s' % (self.ipaddr_switch, self.name_switch, self.switch_house)
+
+
+
