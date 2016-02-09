@@ -48,3 +48,30 @@ class House(models.Model):
         else:
             return u'%s %s' % (self.street_house, self.num_house)
 
+class VendorModel(models.Model):
+    class Meta():
+        db_table = 'vendor_model'
+        verbose_name = u'Производитель'
+        verbose_name_plural = u'Производители'
+    vendor_name = models.CharField(u'Производитель',max_length=200)
+    date_create_vendor = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User)
+
+    def __unicode__(self):
+        return self.vendor_name
+
+
+class SwitchModel(models.Model):
+    class Meta():
+        db_table = 'switch_model'
+        verbose_name = u'Модель'
+        verbose_name_plural = u'Модели'
+    vendor_model = models.ForeignKey(VendorModel)
+    name_model = models.CharField(u'Название модели', max_length=200)
+    num_ports_model = models.IntegerField(u'Кол-во (медных) портов', default=1)
+    num_watt_model = models.IntegerField(u'Потребляемая мощность в Вт', default=1)
+    date_create_model = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User)
+
+    def __unicode__(self):
+        return u'%s %s' % (self.vendor_model, self.name_model)
