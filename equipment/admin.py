@@ -5,7 +5,7 @@ from equipment.models import Area, Street, House, VendorModel, SwitchModel, Swit
 
 class SwitchInHouse(admin.StackedInline):
     model = Switch
-    extra = 1
+    extra = 0
 
 class HouseAdmin(admin.ModelAdmin):
     inlines = [SwitchInHouse]
