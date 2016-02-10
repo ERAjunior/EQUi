@@ -15,6 +15,7 @@
             <th>Обозначение</th>
             <th>IP адрес</th>
             <th>Модель</th>
+            <th>Description</th>
         </tr>
 
         {% for switch in switches %}
@@ -24,10 +25,31 @@
                 <td>{{ switch.name_switch }}</td>
                 <td><a href="http://{{ switch.ipaddr_switch }}" target="_blank">{{ switch.ipaddr_switch }}</a></td>
                 <td>{{ switch.switch_modelid }}</td>
+                <td>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info">Посмотреть</button>
+                </td>
             </tr>
+
+
+
         {% endfor %}
 
     </table>
 
+
+{% endblock %}
+
+{% block modal-content %}
+
+    <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Descripion</h4>
+    </div>
+    <div class="modal-body">
+        <p>Тут будет таблица с дескрипшеном!</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
+    </div>
 
 {% endblock %}
