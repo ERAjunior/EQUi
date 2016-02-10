@@ -13,6 +13,7 @@
             <th>Район</th>
             <th>Адрес</th>
             <th>Обозначение</th>
+            <th>IP адрес</th>
             <th>Модель</th>
         </tr>
         <tr>
@@ -21,6 +22,7 @@
                 <td>{{ switch.switch_house.street_house.id_area }}</td>
                 <td>{{ switch.switch_house }}</td>
                 <td>{{ switch.name_switch }}</td>
+                <td><a href="http://{{ switch.ipaddr_switch }}" target="_blank">{{ switch.ipaddr_switch }}</a></td>
                 <td>{{ switch.switch_modelid }}</td>
                 </tr>
             {% endfor %}
