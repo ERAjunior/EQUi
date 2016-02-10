@@ -10,10 +10,10 @@ class SwitchInHouse(admin.StackedInline):
 class HouseAdmin(admin.ModelAdmin):
     inlines = [SwitchInHouse]
 
-
 class SwitchInLine(admin.StackedInline):
     model = Description
     extra = 0
+    fields = [('descr_FIO','descr_port','descr_kv','descr_pd'),'user']
 
 class SwitchAdmin(admin.ModelAdmin):
     inlines = [SwitchInLine]
