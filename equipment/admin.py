@@ -11,13 +11,13 @@ class HouseAdmin(admin.ModelAdmin):
     inlines = [SwitchInHouse]
 
 
-class DescriptionInSwitch(admin.StackedInline):
+class SwitchInLine(admin.StackedInline):
     model = Description
     extra = 0
 
-
 class SwitchAdmin(admin.ModelAdmin):
-    inlines = [DescriptionInSwitch]
+    inlines = [SwitchInLine]
+
 
 admin.site.register([Area,Street,VendorModel, SwitchModel])
 admin.site.register(House, HouseAdmin)
