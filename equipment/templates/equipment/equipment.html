@@ -5,5 +5,31 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Оборудование КТВ</h1>
+    <table  cellspacing="5" cellpadding="10" border="1" width="100%">
+            <caption><h1>Оборудование КТВ</h1></caption>
+<tr>
+                    <th>Район</th>
+                    <th>Расположение</th>
+                    <th>Обозначение на сети</th>
+                    <th>Модель</th>
+
+</tr>
+<tr>
+
+            {% for area in areas %}
+            {% endfor %}
+            {% for switch in switches %}
+            <td>{{area.name_area}}</td>
+            <td>{{switch.switch_house}}</td>
+            <td>{{switch.name_switch}}</td>
+            <td>{{switch.switch_modelid}}</td>
+
+ </tr>
+            {% endfor %}
+        </table>
+
+
+
+
+
 {% endblock %}
