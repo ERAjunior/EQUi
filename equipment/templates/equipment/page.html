@@ -88,5 +88,10 @@
         }
     });
 </script>
+<script>
+    $('#modal-info').on('hidden.bs.modal', function () {
+        $(this).removeData('bs.modal');
+    });
+</script>
 </body>
 </html>

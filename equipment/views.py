@@ -11,10 +11,15 @@ def index(request):
 
 def equipment(request):
     switches = Switch.objects.all()
-    descriptions = Description.objects.all()
     context = {
         'switches': switches,
-        'descriptions': descriptions,
     }
     return render(request, 'equipment/equipment.html', context)
 
+
+def description(request, switch_id):
+    descriptions = Description.objects.filter(descr_switch_id=switch_id)
+    context = {
+        'descriptions': descriptions,
+    }
+    return render(request, 'equipment/description.html', context)

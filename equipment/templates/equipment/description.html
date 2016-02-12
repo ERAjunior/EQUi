@@ -1,0 +1,26 @@
+   <div class="modal-header">
+    <button class="close" type="button" data-dismiss="modal">&times;</button>
+    <h4 class="modal-title">Дескрипшен коммутатора</h4>
+</div>
+<div class="modal-body">
+    <table class="table table-striped">
+        <tr>
+            <th>ФИО абонента</th>
+            <th>Порт</th>
+            <th>Квартира</th>
+            <th>Подъезд</th>
+        </tr>
+        {% for description in descriptions   %}
+        <tr>
+                <td>{{ description.descr_FIO }}</td>
+                <td>{{ description.descr_port }}</td>
+                <td>{{ description.descr_kv }}</td>
+                <td>{{ description.descr_pd }}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
+</div>
