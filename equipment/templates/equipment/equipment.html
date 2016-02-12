@@ -26,10 +26,7 @@
                 <td><a href="http://{{ switch.ipaddr_switch }}" target="_blank">{{ switch.ipaddr_switch }}</a></td>
                 <td>{{ switch.switch_modelid }}</td>
                 <td>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info"
-                            id="{{ switch.id }}">
-                        Посмотреть
-                    </button>
+                  <a href="{{ switch.id }}" class="btn btn-info" data-toggle="modal" data-target="#modal-info">Посмотреть</a>
                 </td>
             </tr>
 
