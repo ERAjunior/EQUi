@@ -26,7 +26,8 @@
                 <td><a href="http://{{ switch.ipaddr_switch }}" target="_blank">{{ switch.ipaddr_switch }}</a></td>
                 <td>{{ switch.switch_modelid }}</td>
                 <td>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info" id="{{ switch.id }}">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info"
+                            id="{{ switch.id }}">
                         Посмотреть
                     </button>
                 </td>
@@ -47,12 +48,25 @@
         <h4 class="modal-title">Descripion</h4>
     </div>
     <div class="modal-body">
-        {% for description in description %}
-         <tr>
-            <td> {{ description.descr_FIO }}    </td>
+        <table class="table table-striped">
+            <tr>
+                <th>ФИО абонента</th>
+                <th>Порт</th>
+                <th>Квартира</th>
+                <th>Подъезд</th>
+            </tr>
+            {% for description in descriptions %}
+            <tr>
 
-        </tr>
-{% endfor %}
+                    <td>{{ description.descr_FIO }}</td>
+                    <td>{{ description.descr_port }}</td>
+                    <td>{{ description.descr_kv }}</td>
+                    <td>{{ description.descr_pd }}</td>
+
+
+            </tr>
+        {% endfor %}
+        </table>
     </div>
     <div class="modal-footer">
         <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
