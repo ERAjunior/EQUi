@@ -19,7 +19,9 @@ def equipment(request):
 
 def description(request, switch_id):
     descriptions = Description.objects.filter(descr_switch_id=switch_id)
+    switch = Switch.objects.get(id=switch_id)
     context = {
         'descriptions': descriptions,
+        'switch': switch
     }
     return render(request, 'equipment/description.html', context)
